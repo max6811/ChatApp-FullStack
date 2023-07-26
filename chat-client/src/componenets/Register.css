@@ -1,0 +1,28 @@
+.connect-form {
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+    padding: 15px;
+    border: solid 1px;
+    border-radius: 5%;
+    color: aquamarine;
+}
+
+.connect-button {
+    background-color: aquamarine;
+    margin-top: 15px;
+    font-size: large;
+    padding: 5px;
+}
+
+.connect-label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 5px;
+}
+
+.connect-input {
+    border-radius: 5%;
+    padding: 5px;
+}

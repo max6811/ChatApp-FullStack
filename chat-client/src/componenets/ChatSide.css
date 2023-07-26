@@ -1,0 +1,14 @@
+.chat-aside {
+    background-color: aquamarine;
+    width: 200px;
+    height: 570px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.user-item {
+    background-color: #8c9ea8;
+    padding: 1px;
+    margin: 5px 5px 5px 5px;
+    border-radius: 10px;
+}

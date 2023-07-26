@@ -1,0 +1,69 @@
+.chat-body {
+    background-color: aliceblue;
+    color: black;
+    width: 580px;
+    height: 450px;
+    padding: 10px;
+    overflow-y: auto;
+    margin: 5px;
+    border-radius: 10px;
+    border: solid 2px #b1f4ed;
+}
+.chat-section {
+    display: flex;
+    flex-direction: column;
+}
+.chat-close {
+    width: 50px;
+    padding: 5px;
+    margin: 5px;
+    background-color: aquamarine;
+    align-self: flex-end;    
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: row;
+    padding: 2px;
+}
+
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    border-radius: 10px;
+    padding: 5px;
+    max-width: 500px;
+    width: auto;
+}
+
+.chat-box .user {
+    font-size: small;
+    font-weight: bold;
+    align-self: start;
+}
+
+.chat-box .message {
+    align-self: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.chat-box .date {
+    font-size: 10px;
+    align-self: end;
+}
+
+.sidescroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidescroll::-webkit-scrollbar-track {
+    background: #416c7a;
+    border-radius: 20%;
+}
+
+.sidescroll::-webkit-scrollbar-thumb {
+    background-color: #b1f4ed;
+    border-radius: 50px;
+}
