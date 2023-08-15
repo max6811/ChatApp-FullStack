@@ -2,43 +2,37 @@ package com.maxcmartinez.socketservice.contollers;
 
 
 import com.maxcmartinez.socketservice.models.Message;
-import com.maxcmartinez.socketservice.models.OutputMessage;
 import com.maxcmartinez.socketservice.models.User;
+import com.maxcmartinez.socketservice.services.WSMessageHandlingService;
+import lombok.AllArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Controller
+@RestController
+@AllArgsConstructor
 public class MessageHandlingContoller {
-    private List<User> users ;
-    private final Set<String> listUser;
 
-    public  MessageHandlingContoller(){
-        this.users = new ArrayList<>();
-        this.listUser = new HashSet<>();
-    }
+    private final WSMessageHandlingService wsMessageHandlingService;
 
     @MessageMapping("/public-chat")
     @SendTo("/public/messages")
-    public OutputMessage send(Message message) throws Exception {
-        String time = new SimpleDateFormat("HH:mm").format(new Date());
-        return new OutputMessage(message.getSenderName(), message.getText(), message.getStatus(), time);
+    public Message send(@Payload Message message) {
+        return wsMessageHandlingService.send(message);
     }
 
     @MessageMapping("/connect")
     @SendTo("/public/list-user")
-    public Set<String> connect(String name){
-        listUser.add(name);
-        return listUser;
+    public Set<User> connect(@Payload User user) {
+        return wsMessageHandlingService.connectUser(user);
     }
 
     @MessageMapping("/disconnect")
     @SendTo("/public/list-user")
-    public Set<String> disconnect(String name){
-        listUser.remove(name);
-        return listUser;
+    public Set<User> disconnect(@Payload User user) {
+        return wsMessageHandlingService.disconnectUser(user);
     }
 }

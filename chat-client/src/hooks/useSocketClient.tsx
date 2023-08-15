@@ -9,7 +9,7 @@ import { User } from "../interfaces/User";
 
 const useSocketClient = (user: User) => {
     const [stompClient, setStompClient] = useState<Client | null>(null);
-    const [listUser, setListUser] = useState<Array<string>>([]);
+    const [listUser, setListUser] = useState<Array<User>>([]);
     let client: Client;
 
     const publicChatDispatch = useContext(ChatDispatchContext);
@@ -29,12 +29,12 @@ const useSocketClient = (user: User) => {
 
     const userJoin = () => {
         const chatMessage: ChatMessage = {
-            senderName: user.nickName,
+            sender: user.name,
             isOwner: false,
             status: "JOIN",
         };
-        client.send("/app/public-chat", {}, JSON.stringify(chatMessage));
-        client.send("/app/connect", {}, JSON.stringify(user.nickName));
+        client.send("/api/public-chat", {}, JSON.stringify(chatMessage));
+        client.send("/api/connect", {}, JSON.stringify(user));
     };
 
     const onMessageReceived = (payload: Message) => {
@@ -52,7 +52,7 @@ const useSocketClient = (user: User) => {
     };
 
     const onListUserReceived = (payload: Message) => {
-        setListUser(JSON.parse(payload.body) as Array<string>);
+        setListUser(JSON.parse(payload.body) as Array<User>);
     };
 
     const onError = (err: Frame | string) => {

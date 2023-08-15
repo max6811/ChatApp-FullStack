@@ -12,7 +12,7 @@ import "./ChatPage.css";
 interface ChatPageProps {
     user: User;
     setUser: (user: User) => void;
-    listUser: Array<string>;
+    listUser: Array<User>;
     stompClient: Client | null;
 }
 
@@ -27,12 +27,12 @@ const ChatPage: FC<ChatPageProps> = ({
     const handleSendMessage = (text: string) => {
         if (text !== "" && stompClient) {
             const chatMessage: ChatMessage = {
-                senderName: user.nickName,
+                sender: user.name,
                 text: text,
                 status: "MESSAGE",
             };
             stompClient?.send(
-                "/app/public-chat",
+                "/api/public-chat",
                 {},
                 JSON.stringify(chatMessage)
             );
@@ -41,14 +41,14 @@ const ChatPage: FC<ChatPageProps> = ({
     };
 
     const handleClose = () => {
-        stompClient?.send("/app/disconnect", {}, JSON.stringify(user.nickName));
+        stompClient?.send("/api/disconnect", {}, JSON.stringify(user));
         stompClient?.disconnect(disconnectHandler, {});
     };
 
     const disconnectHandler = () => {
         setUser({
-            fullName: "",
-            nickName: "",
+            name: "",
+            email: "",
             connected: false,
         });
     };

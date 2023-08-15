@@ -2,7 +2,7 @@ import { UUID } from "crypto";
 
 export interface User {
     id?: UUID;
-    fullName: string;
-    nickName: string;
+    email: string;
+    name: string;
     connected: boolean;
 }

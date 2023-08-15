@@ -1,14 +1,13 @@
-import { useState,useEffect,  FC } from "react";
+import { useState, useEffect, FC } from "react";
 import { User } from "../interfaces/User";
 import useSocketClient from "../hooks/useSocketClient";
 import ChatPage from "../pages/ChatPage";
 import Register from "../componenets/Register";
 
 const Routes: FC = () => {
-
     const userStart: User = {
-        fullName: "",
-        nickName: "",
+        name: "",
+        email: "",
         connected: false,
     };
     const [user, setUser] = useState<User>(userStart);
@@ -17,7 +16,7 @@ const Routes: FC = () => {
 
     return (
         <>
-            {user?.connected ? (
+            {user?.connected && stompClient?.connected? (
                 <ChatPage
                     user={user}
                     setUser={setUser}

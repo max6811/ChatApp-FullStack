@@ -1,18 +1,15 @@
 package com.maxcmartinez.socketservice.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
 public class User {
-    private UUID id;
-    private String fullName;
-    private String nickName;
+    private String email;
+    private String name;
     private boolean connected;
 }
+

@@ -1,6 +1,6 @@
 package com.maxcmartinez.socketservice.models;
 
-import com.maxcmartinez.socketservice.enums.Status;
+import com.maxcmartinez.socketservice.enums.MessageStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Message {
-    private String senderName;
+    private String sender;
+    private String email;
+    private String date;
     private String text;
-    private Status status;
+    private MessageStatus status;
 }

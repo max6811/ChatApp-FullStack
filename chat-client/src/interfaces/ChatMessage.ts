@@ -1,7 +1,7 @@
 import { User } from "./User";
 
 export interface ChatMessage {
-    senderName: string;
+    sender: string;
     text?: string;
     isOwner?: boolean;
     user?: User;

@@ -1,6 +1,6 @@
 package com.maxcmartinez.socketservice.enums;
 
-public enum Status {
+public enum MessageStatus {
     JOIN,
     MESSAGE,
     LEAVE

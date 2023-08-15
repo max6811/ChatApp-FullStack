@@ -20,7 +20,7 @@ const Register: FC<RegisterProps> = ({ user, setUser, socketConnect }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if ((user.fullName !== "", user.nickName !== "")) {
+        if ((user.name !== "", user.email !== "")) {
             setUser({ ...user, connected: true });
             socketConnect();
         }
@@ -29,22 +29,22 @@ const Register: FC<RegisterProps> = ({ user, setUser, socketConnect }) => {
     return (
         <form className='connect-form' onSubmit={(e) => handleSubmit(e)}>
             <label className='connect-label' htmlFor=''>
-                FullName
+                Name
                 <input
                     className='connect-input'
                     type='text'
-                    name='fullName'
-                    value={user.fullName}
+                    name='name'
+                    value={user.name}
                     onChange={(e) => handleChange(e)}
                 />
             </label>
             <label className='connect-label' htmlFor=''>
-                NickName
+                Email
                 <input
                     className='connect-input'
                     type='text'
-                    name='nickName'
-                    value={user.nickName}
+                    name='email'
+                    value={user.email}
                     onChange={(e) => handleChange(e)}
                 />
             </label>

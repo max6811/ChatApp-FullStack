@@ -21,7 +21,7 @@ const ChatBody: FC<ChatBodyProps> = ({ user, handleClose }) => {
                     key={index}
                     className='chat-box'
                     style={
-                        chat.senderName !== user.nickName
+                        chat.sender !== user.name
                             ? { justifyContent: "start" }
                             : { justifyContent: "end" }
                     }
@@ -29,7 +29,7 @@ const ChatBody: FC<ChatBodyProps> = ({ user, handleClose }) => {
                     <div
                         className='chat-message'
                         style={
-                            chat.senderName !== user.nickName
+                            chat.sender !== user.name
                                 ? {
                                       justifyContent: "start",
                                       backgroundColor: "#8c9ea8",
@@ -40,7 +40,7 @@ const ChatBody: FC<ChatBodyProps> = ({ user, handleClose }) => {
                                   }
                         }
                     >
-                        <span className='user'>{chat.senderName}</span>
+                        <span className='user'>{chat.sender}</span>
                         <p className='message'>{chat.text}</p>
                         <span className='date'>{chat.date?.toString()}</span>
                     </div>
